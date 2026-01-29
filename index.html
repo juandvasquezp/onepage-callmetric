@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CALL METRIC - Presentación Ejecutiva</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .call-metric-title {
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 8px;
+            font-size: 5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            text-shadow: 
+                0 0 10px rgba(255,255,255,0.8),
+                0 0 20px rgba(255,255,255,0.6),
+                0 0 30px rgba(255,255,255,0.4),
+                0 0 40px rgba(246,139,31,0.5),
+                0 0 70px rgba(246,139,31,0.3);
+        }
+        
+        .ribbon {
+            position: absolute;
+            top: 12px;
+            right: -8px;
+            background-color: #FBBF24;
+            color: #78350F;
+            padding: 4px 12px;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            border-radius: 3px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+        
+        .gradient-bg {
+            background-color: #B2272D;
+        }
+        
+        .gradient-accent {
+            background-color: #0097A7;
+        }
+        
+        .stat-card {
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .flow-arrow {
+            position: relative;
+        }
+        
+        .flow-arrow::after {
+            content: '→';
+            font-size: 2rem;
+            color: #0097A7;
+            font-weight: bold;
+        }
+        
+        .impact-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #F68B1F;
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background-color: #0097A7;
+            border-radius: 2px;
+        }
+        
+        @media print {
+            body {
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+        }
+        
+        .icon-box {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 16px;
+            font-size: 2rem;
+        }
+        
+        .pulse-dot {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: .5;
+            }
+        }
+
+        .bg-primary {
+            background-color: #B2272D;
+        }
+
+        .bg-secondary {
+            background-color: #0097A7;
+        }
+
+        .bg-accent {
+            background-color: #F68B1F;
+        }
+
+        .bg-light-red {
+            background-color: #CD2026;
+        }
+
+        .text-primary {
+            color: #B2272D;
+        }
+
+        .text-secondary {
+            color: #0097A7;
+        }
+
+        .text-accent {
+            color: #F68B1F;
+        }
+
+        .border-primary {
+            border-color: #B2272D;
+        }
+
+        .border-secondary {
+            border-color: #0097A7;
+        }
+
+        .border-accent {
+            border-color: #F68B1F;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Main Container -->
+    <div class="max-w-5xl mx-auto bg-white shadow-2xl">
+        
+        <!-- Header -->
+        <header class="bg-primary text-white py-12 px-8 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full -mr-32 -mt-32"></div>
+            <div class="absolute bottom-0 left-0 w-48 h-48 bg-white opacity-5 rounded-full -ml-24 -mb-24"></div>
+            <div class="relative z-10">
+                <div class="flex items-center justify-between mb-4">
+                    <div>
+                        <h1 class="call-metric-title text-white mb-2">CALL METRIC</h1>
+                        <p class="text-2xl font-light text-gray-100">Herramienta con IA para mejorar la calidad del servicio en call centers</p>
+                    </div>
+                    <div class="text-right flex items-center gap-4">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Claro.svg/1280px-Claro.svg.png" alt="Claro Logo" class="h-24 cursor-pointer hover:scale-110 transition-transform" onclick="openIntegrantesModal()">
+                    </div>
+                </div>
+                <div class="flex gap-4 mt-6">
+                    <span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold">IA + Automatización</span>
+                    <span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold">Análisis en Tiempo Real</span>
+                    <span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold pulse-dot">Listo para Piloto</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Problem Section -->
+        <section class="px-8 py-10 bg-red-50 border-l-8 border-primary">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 section-title">🚨 EL PROBLEMA</h2>
+            <div class="grid grid-cols-3 gap-6 mt-8">
+                <div class="stat-card bg-white p-6 rounded-xl shadow-lg text-center border-t-4 border-primary">
+                    <i class="fas fa-exclamation-triangle text-5xl text-primary mb-4"></i>
+                    <h3 class="font-bold text-gray-700 text-lg mb-2">Información Inconsistente</h3>
+                    <p class="text-gray-600 text-sm">Errores que generan confusión y reclamos</p>
+                </div>
+                <div class="stat-card bg-white p-6 rounded-xl shadow-lg text-center border-t-4 border-accent">
+                    <i class="fas fa-user-times text-5xl text-accent mb-4"></i>
+                    <h3 class="font-bold text-gray-700 text-lg mb-2">Mala Experiencia</h3>
+                    <p class="text-gray-600 text-sm">Clientes insatisfechos abandonan el servicio</p>
+                </div>
+                <div class="stat-card bg-white p-6 rounded-xl shadow-lg text-center border-t-4 border-light-red">
+                    <i class="fas fa-gavel text-5xl text-light-red mb-4"></i>
+                    <h3 class="font-bold text-gray-700 text-lg mb-2">Sanciones SIC</h3>
+                    <p class="text-gray-600 text-sm">Multas millonarias por incumplimiento</p>
+                </div>
+            </div>
+            <div class="mt-8 bg-primary text-white p-6 rounded-xl text-center">
+                <p class="text-xl font-bold mb-2">Multas impuestas por la SIC en Colombia (últimos 3 años)</p>
+                <p class="impact-number">+$5.800M COP</p>
+                <p class="text-sm opacity-90">A Claro Colombia por información incompleta o engañosa</p>
+            </div>
+        </section>
+
+        <!-- Solution Section -->
+        <section class="px-8 py-10 bg-blue-50">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 section-title">💡 LA SOLUCIÓN</h2>
+            <div class="grid grid-cols-2 gap-8 mt-8">
+                <div class="bg-white p-8 rounded-2xl shadow-xl border-l-4 border-secondary">
+                    <div class="flex items-start gap-4">
+                        <div class="icon-box bg-blue-100 text-secondary">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-3">Flujo n8n + agentes de IA</h3>
+                            <p class="text-gray-600">Motor con inteligencia artificial para automatización avanzada que logra procesar miles de llamadas</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-xl border-l-4 border-secondary cursor-pointer hover:shadow-2xl hover:scale-[1.02] transition-all" onclick="openVideoModal()">
+                    <div class="flex items-start gap-4">
+                        <div class="icon-box bg-blue-100 text-secondary">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-3">Dashboard Estratégico <i class="fas fa-play-circle text-secondary ml-2"></i></h3>
+                            <p class="text-gray-600">Visualización en tiempo real de KPIs críticos e información estratégica para Claro</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How it Works -->
+        <section class="px-8 py-10 bg-white">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 section-title">⚙️ CÓMO FUNCIONA</h2>
+            <div class="flex items-center justify-between mt-8 bg-gray-100 p-8 rounded-2xl">
+                <div class="text-center flex-1">
+                    <div class="icon-box bg-secondary text-white mx-auto mb-3">
+                        <i class="fas fa-phone-volume"></i>
+                    </div>
+                    <p class="font-bold text-gray-700">Llamadas</p>
+                </div>
+                <div class="flow-arrow px-4"></div>
+                <div class="text-center flex-1">
+                    <div class="icon-box bg-secondary text-white mx-auto mb-3">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <p class="font-bold text-gray-700">IA Analiza</p>
+                </div>
+                <div class="flow-arrow px-4"></div>
+                <div class="text-center flex-1">
+                    <div class="icon-box bg-accent text-white mx-auto mb-3">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <p class="font-bold text-gray-700">Automatización</p>
+                </div>
+                <div class="flow-arrow px-4"></div>
+                <div class="text-center flex-1">
+                    <div class="icon-box bg-accent text-white mx-auto mb-3">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <p class="font-bold text-gray-700">Dashboard</p>
+                </div>
+                <div class="flow-arrow px-4"></div>
+                <div class="text-center flex-1">
+                    <div class="icon-box bg-green-500 text-white mx-auto mb-3">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <p class="font-bold text-gray-700">Decisiones</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact Section -->
+        <section class="px-8 py-10 bg-green-50">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 section-title">📈 IMPACTO</h2>
+            <div class="grid grid-cols-3 gap-6 mt-8">
+                <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-secondary">
+                    <i class="fas fa-building text-4xl text-secondary mb-4"></i>
+                    <h3 class="font-bold text-gray-800 mb-3">Operación</h3>
+                    <ul class="text-gray-600 text-sm space-y-2">
+                        <li>✓ + eficiencia</li>
+                        <li>✓ Control total</li>
+                        <li>✓ Identificación de errores</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-secondary">
+                    <i class="fas fa-smile text-4xl text-secondary mb-4"></i>
+                    <h3 class="font-bold text-gray-800 mb-3">Cliente</h3>
+                    <ul class="text-gray-600 text-sm space-y-2">
+                        <li>✓ Mejor experiencia</li>
+                        <li>✓ Mayor confianza</li>
+                        <li>✓ Menos reclamos</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-primary">
+                    <i class="fas fa-trophy text-4xl text-primary mb-4"></i>
+                    <h3 class="font-bold text-gray-800 mb-3">Empresa</h3>
+                    <ul class="text-gray-600 text-sm space-y-2">
+                        <li>✓ Mejor reputación</li>
+                        <li>✓ Cumplimiento KPIs</li>
+                        <li>✓ Ahorro en multas</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Users Section -->
+        <section class="px-8 py-10 bg-gray-50">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 section-title">👥 USUARIOS Y BENEFICIARIOS</h2>
+            <div class="grid grid-cols-2 gap-6 mt-8 max-w-2xl mx-auto">
+                <div class="bg-white p-8 rounded-xl shadow-md text-center hover:shadow-xl transition-shadow border-t-4 border-primary">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Claro.svg/1280px-Claro.svg.png" alt="Claro Logo" class="h-16 mx-auto mb-4">
+                    <p class="font-bold text-gray-700 text-xl">Claro</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-md text-center hover:shadow-xl transition-shadow border-t-4 border-accent">
+                    <i class="fas fa-users text-5xl text-accent mb-4"></i>
+                    <p class="font-bold text-gray-700 text-xl">Clientes</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Value Proposition -->
+        <section class="px-8 py-10 bg-secondary text-white">
+            <h2 class="text-3xl font-bold mb-8 section-title text-white">⭐ VALOR AGREGADO</h2>
+            <div class="grid grid-cols-3 gap-6">
+                <div class="text-center">
+                    <div class="bg-white/20 backdrop-blur-sm rounded-2xl p-6 h-full">
+                        <i class="fas fa-database text-5xl mb-4"></i>
+                        <h3 class="font-bold text-xl mb-2">Decisiones basadas en datos</h3>
+                        <p class="text-gray-100">Reportes reales, no intuiciones</p>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <div class="bg-white/20 backdrop-blur-sm rounded-2xl p-6 h-full">
+                        <i class="fas fa-shield-alt text-5xl mb-4"></i>
+                        <h3 class="font-bold text-xl mb-2">Prevención de fallas</h3>
+                        <p class="text-gray-100">Detecta problemas antes que escalen</p>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <div class="bg-white/20 backdrop-blur-sm rounded-2xl p-6 h-full">
+                        <i class="fas fa-chart-line text-5xl mb-4"></i>
+                        <h3 class="font-bold text-xl mb-2">Mejora continua</h3>
+                        <p class="text-gray-100">Optimización constante del servicio</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Status -->
+        <section class="px-8 py-10 bg-white">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 section-title">🚀 ESTADO DEL PROYECTO</h2>
+            <div class="grid grid-cols-4 gap-5 mt-8">
+                <div class="bg-green-50 p-6 rounded-2xl border-2 border-green-500 text-center">
+                    <i class="fas fa-check-circle text-5xl text-green-600 mb-3"></i>
+                    <h3 class="font-bold text-lg text-gray-800 mb-2">Flujo n8n</h3>
+                    <p class="text-green-700 font-semibold">✓ FUNCIONAL</p>
+                </div>
+                <div class="bg-green-50 p-6 rounded-2xl border-2 border-green-500 text-center">
+                    <i class="fas fa-check-circle text-5xl text-green-600 mb-3"></i>
+                    <h3 class="font-bold text-lg text-gray-800 mb-2">Dashboard</h3>
+                    <p class="text-green-700 font-semibold">✓ DESARROLLADO</p>
+                </div>
+                <div class="bg-yellow-50 p-6 rounded-2xl border-2 border-accent text-center relative">
+                    <div class="ribbon">READY</div>
+                    <i class="fas fa-rocket text-5xl text-accent mb-3"></i>
+                    <h3 class="font-bold text-lg text-gray-800 mb-2">Piloto</h3>
+                    <p class="text-accent font-semibold">⚡ LISTO PARA LANZAR</p>
+                </div>
+                <div class="bg-purple-50 p-6 rounded-2xl border-2 border-purple-500 text-center">
+                    <i class="fas fa-expand-arrows-alt text-5xl text-purple-600 mb-3"></i>
+                    <h3 class="font-bold text-lg text-gray-800 mb-2">Escalabilidad</h3>
+                    <p class="text-purple-700 font-semibold">Implementación en otras áreas</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer / CTA -->
+        <footer class="bg-primary text-white py-10 px-8 text-center">
+            <p class="text-2xl font-semibold text-gray-100">CALL METRIC convierte datos en decisiones y llamadas en oportunidades</p>
+        </footer>
+
+    </div>
+
+    <!-- Modal para mostrar integrantes -->
+    <div id="integrantesModal" class="fixed inset-0 bg-black/80 hidden z-50 flex items-center justify-center p-4">
+        <button onclick="closeIntegrantesModal()" class="absolute top-4 right-4 text-white text-4xl hover:text-yellow-400 transition-colors">&times;</button>
+        
+        <div class="flex flex-col items-center max-w-full max-h-full">
+            <img id="integrantesImg" src="" alt="Integrantes del proyecto" class="max-w-full max-h-[85vh] rounded-lg shadow-2xl">
+            <p class="text-white/70 text-center mt-4 text-sm font-light italic">Click fuera para cerrar</p>
+        </div>
+    </div>
+
+    <!-- Modal para mostrar video -->
+    <div id="videoModal" class="fixed inset-0 bg-black/90 hidden z-50 flex items-center justify-center p-4">
+        <button onclick="closeVideoModal()" class="absolute top-4 right-4 text-white text-4xl hover:text-yellow-400 transition-colors z-60">&times;</button>
+        
+        <div class="flex flex-col items-center max-w-full max-h-full">
+            <video id="presentacionVideo" controls class="max-w-full max-h-[85vh] rounded-lg shadow-2xl" style="max-width: 900px;">
+                <source src="https://github.com/juandvasquezp/DashboardCallmetric/raw/refs/heads/main/presentaci%C3%B3nCallMetric.mp4" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>
+            <p class="text-white/70 text-center mt-4 text-sm font-light italic">Click fuera para cerrar</p>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scroll and animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add fade-in animation on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Apply animation to sections
+            document.querySelectorAll('section').forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(section);
+            });
+
+            // Initial animation for header
+            setTimeout(() => {
+                document.querySelector('header').style.opacity = '1';
+                document.querySelector('header').style.transform = 'translateY(0)';
+            }, 100);
+        });
+
+        // Print optimization
+        window.addEventListener('beforeprint', function() {
+            document.querySelectorAll('section').forEach(section => {
+                section.style.opacity = '1';
+                section.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Modal functions
+        function openIntegrantesModal() {
+            const modal = document.getElementById('integrantesModal');
+            const modalImg = document.getElementById('integrantesImg');
+            modalImg.src = 'https://raw.githubusercontent.com/juandvasquezp/DashboardCallmetric/refs/heads/main/integrantes.png';
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeIntegrantesModal() {
+            const modal = document.getElementById('integrantesModal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal on outside click
+        document.getElementById('integrantesModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeIntegrantesModal();
+            }
+        });
+
+        // Close on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeIntegrantesModal();
+                closeVideoModal();
+            }
+        });
+
+        // Video Modal functions
+        function openVideoModal() {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('presentacionVideo');
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            video.currentTime = 0;
+        }
+
+        function closeVideoModal() {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('presentacionVideo');
+            video.pause();
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close video modal on outside click
+        document.getElementById('videoModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeVideoModal();
+            }
+        });
+    </script>
+</body>
+</html>
